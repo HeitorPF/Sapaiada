@@ -69,6 +69,7 @@ public class ListaFuncionarios extends javax.swing.JFrame {
         rotBuscarPor.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         rotBuscarPor.setText("BUSCAR POR:");
 
+        btVoltar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btVoltar.setText("VOLTAR");
         btVoltar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -76,6 +77,7 @@ public class ListaFuncionarios extends javax.swing.JFrame {
             }
         });
 
+        btAdicionar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btAdicionar.setText("ADICIONAR");
         btAdicionar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -83,6 +85,7 @@ public class ListaFuncionarios extends javax.swing.JFrame {
             }
         });
 
+        btBusca.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btBusca.setText("BUSCAR");
         btBusca.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -109,7 +112,7 @@ public class ListaFuncionarios extends javax.swing.JFrame {
                 .addGap(14, 14, 14)
                 .addComponent(btVoltar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btAdicionar, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btAdicionar)
                 .addGap(15, 15, 15))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)

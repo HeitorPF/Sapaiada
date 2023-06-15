@@ -38,14 +38,16 @@ public class Comprar extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Comprar");
 
-        btComprar.setText("Comprar");
+        btComprar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btComprar.setText("COMPRAR");
         btComprar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btComprarActionPerformed(evt);
             }
         });
 
-        btVoltar.setText("Voltar");
+        btVoltar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btVoltar.setText("VOLTAR");
         btVoltar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btVoltarActionPerformed(evt);

@@ -1,5 +1,6 @@
 package sapaiada;
 
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 
@@ -37,7 +38,7 @@ public class Principal extends javax.swing.JFrame {
         btConectar = new javax.swing.JButton();
         cxSenha = new javax.swing.JPasswordField();
         btListaFunc = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        btAddRoupa = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         mnLogin = new javax.swing.JMenu();
         mnitLogin = new javax.swing.JMenuItem();
@@ -54,10 +55,7 @@ public class Principal extends javax.swing.JFrame {
 
         tabRoupa.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+
             },
             new String [] {
                 "Roupa", "Preço", "Quantidade"
@@ -92,14 +90,16 @@ public class Principal extends javax.swing.JFrame {
             }
         });
 
-        btComprar.setText("Comprar");
+        btComprar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btComprar.setText("COMPRAR");
         btComprar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btComprarActionPerformed(evt);
             }
         });
 
-        btPesquisar.setText("Pesquisar");
+        btPesquisar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btPesquisar.setText("PESQUISAR");
         btPesquisar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btPesquisarActionPerformed(evt);
@@ -108,7 +108,8 @@ public class Principal extends javax.swing.JFrame {
 
         rtSenha.setText("Senha Postgresql:");
 
-        btConectar.setText("Conectar");
+        btConectar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btConectar.setText("CONECTAR");
         btConectar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btConectarActionPerformed(evt);
@@ -121,17 +122,19 @@ public class Principal extends javax.swing.JFrame {
             }
         });
 
-        btListaFunc.setText("ListaFunc");
+        btListaFunc.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btListaFunc.setText("LISTA DE FUNCIONARIOS");
         btListaFunc.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btListaFuncActionPerformed(evt);
             }
         });
 
-        jButton1.setText("ADICIONAR ROUPAS");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btAddRoupa.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btAddRoupa.setText("ADICIONAR ROUPAS");
+        btAddRoupa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btAddRoupaActionPerformed(evt);
             }
         });
 
@@ -187,15 +190,11 @@ public class Principal extends javax.swing.JFrame {
                         .addGap(35, 35, 35)
                         .addComponent(btPesquisar))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addContainerGap(20, Short.MAX_VALUE)
-                                .addComponent(jButton1)
-                                .addGap(18, 18, 18))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(48, 48, 48)
-                                .addComponent(btListaFunc)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addGap(27, 27, 27)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(btListaFunc, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btAddRoupa, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
@@ -221,8 +220,8 @@ public class Principal extends javax.swing.JFrame {
                         .addContainerGap(12, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(btConectar)
-                        .addGap(54, 54, 54)
-                        .addComponent(jButton1)
+                        .addGap(55, 55, 55)
+                        .addComponent(btAddRoupa)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btListaFunc)
                         .addGap(82, 82, 82))))
@@ -270,14 +269,14 @@ public class Principal extends javax.swing.JFrame {
             Login.getLoginUnic().setVisible(true);
         }
         else{
-            System.out.println("Já está logado");
+            JOptionPane.showMessageDialog(null, "Já está logado!!",
+                    "Login", 1);
         }
     }//GEN-LAST:event_mnitLoginActionPerformed
 
     private void mnitDeslogarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnitDeslogarActionPerformed
         Login.getLoginUnic().setLog(-1);
         setLog(-1);
-        System.out.println(log);
         botoesCertos(log);
     }//GEN-LAST:event_mnitDeslogarActionPerformed
 
@@ -285,9 +284,9 @@ public class Principal extends javax.swing.JFrame {
         AdicionarCliente.getAddClienteUnic().setVisible(true);
     }//GEN-LAST:event_mnitCadastrarActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btAddRoupaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAddRoupaActionPerformed
         AdicionarRoupa.getAddRoupaUnic().setVisible(true);
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btAddRoupaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -357,13 +356,13 @@ public class Principal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btAddRoupa;
     private javax.swing.JButton btComprar;
     private javax.swing.JButton btConectar;
     private javax.swing.JButton btListaFunc;
     private javax.swing.JButton btPesquisar;
     private javax.swing.JComboBox<String> cbLoja;
     private javax.swing.JPasswordField cxSenha;
-    private javax.swing.JButton jButton1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JMenu mnCadastrar;
