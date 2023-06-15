@@ -261,7 +261,7 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_btListaFuncActionPerformed
 
     private void cxSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cxSenhaActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_cxSenhaActionPerformed
 
     private void mnitLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnitLoginActionPerformed

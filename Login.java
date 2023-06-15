@@ -141,6 +141,9 @@ public class Login extends javax.swing.JFrame {
                 }
             }
         }
+        JOptionPane.showMessageDialog(null, "Senha ou email incorreto",
+                "Erro", 1);
+        limpar();
         Conexao.getCon().executaBuscaCliente();
         for(Cliente c : Banco.getBancoRoupaUnic().getBdCliente()){
             if(cxEmail.getText().equals(c.getEmailCliente())){

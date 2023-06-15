@@ -46,6 +46,11 @@ public class ListaFuncionarios extends javax.swing.JFrame {
         btDeletar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowActivated(java.awt.event.WindowEvent evt) {
+                formWindowActivated(evt);
+            }
+        });
 
         tabFuncionarios.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -172,6 +177,10 @@ public class ListaFuncionarios extends javax.swing.JFrame {
     private void btDeletarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btDeletarActionPerformed
         deletarFunc();
     }//GEN-LAST:event_btDeletarActionPerformed
+
+    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+        listarFunc(0);
+    }//GEN-LAST:event_formWindowActivated
     
     public void listarFunc(int pos) {
         Banco.getBancoRoupaUnic().getBdFuncionario().clear();
