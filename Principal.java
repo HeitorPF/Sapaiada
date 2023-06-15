@@ -254,6 +254,7 @@ public class Principal extends javax.swing.JFrame {
     private void btConectarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btConectarActionPerformed
         setSenhaPostgres(cxSenha.getText());
         Conexao.getCon();
+        listarRoupa();
     }//GEN-LAST:event_btConectarActionPerformed
 
     private void btListaFuncActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btListaFuncActionPerformed
