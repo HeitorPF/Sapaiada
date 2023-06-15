@@ -130,7 +130,7 @@ public class Comprar extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btComprarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btComprarActionPerformed
-        Conexao.getCon().comprarRoupa(Integer.parseInt(cxIdCompra.getText()),r.getIdRoupa(), r.getQuant(), Integer.parseInt(cxQtd.getText()));
+        Conexao.getCon().comprarRoupa(Integer.parseInt(cxIdCompra.getText()), r, Integer.parseInt(cxQtd.getText()));
         JOptionPane.showMessageDialog(null, "Compra Realizada!!",
                 "Compra", 1);
         limpar();
@@ -151,8 +151,7 @@ public class Comprar extends javax.swing.JFrame {
     public void limpar(){
         cxDesc.setText("");
         cxPreco.setText("");
-        cxDesc.setText("");
-        cxPreco.setText("");
+        cxQtd.setText("");
         cxIdCompra.setText("");
     }
 
