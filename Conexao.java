@@ -38,6 +38,19 @@ public class Conexao {
         }
 
     }
+    
+    public int adicionarCliente(int idCliente, String nomeCliente, String teleCliente, String emailCliente, String senha, int idLoja) {
+        try {
+            String sql = "INSERT INTO Cliente values "
+                    + "(" + idCliente + ",'" + nomeCliente + "','" + teleCliente + "','" + emailCliente + "','" + senha + "'," + idLoja + ");";
+            Statement stm = con.createStatement();
+            int res = stm.executeUpdate(sql);
+            return res;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return 0;
+        }
+    }
 
     public int adicionarRoupa(int idRoupa, int idLoja, float preco, String desc, int quant) {
         try {
