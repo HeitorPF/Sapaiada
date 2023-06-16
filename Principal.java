@@ -36,11 +36,13 @@ public class Principal extends javax.swing.JFrame {
         rtSenha = new javax.swing.JLabel();
         btConectar = new javax.swing.JButton();
         cxSenha = new javax.swing.JPasswordField();
-        jButton1 = new javax.swing.JButton();
+        btListaFunc = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         mnLogin = new javax.swing.JMenu();
         mnitLogin = new javax.swing.JMenuItem();
         mnitDeslogar = new javax.swing.JMenuItem();
+        mnCadastrar = new javax.swing.JMenu();
+        mnitCadastrar = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -118,10 +120,10 @@ public class Principal extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setText("ListaFunc");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btListaFunc.setText("ListaFunc");
+        btListaFunc.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btListaFuncActionPerformed(evt);
             }
         });
 
@@ -145,6 +147,18 @@ public class Principal extends javax.swing.JFrame {
 
         jMenuBar1.add(mnLogin);
 
+        mnCadastrar.setText("Cadastrar");
+
+        mnitCadastrar.setText("Cadastrar");
+        mnitCadastrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnitCadastrarActionPerformed(evt);
+            }
+        });
+        mnCadastrar.add(mnitCadastrar);
+
+        jMenuBar1.add(mnCadastrar);
+
         setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -156,7 +170,7 @@ public class Principal extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(rtSenha)
                     .addComponent(btConectar)
-                    .addComponent(jButton1))
+                    .addComponent(btListaFunc))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 76, Short.MAX_VALUE)
@@ -190,7 +204,7 @@ public class Principal extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btComprar)
-                    .addComponent(jButton1))
+                    .addComponent(btListaFunc))
                 .addContainerGap(9, Short.MAX_VALUE))
         );
 
@@ -221,9 +235,9 @@ public class Principal extends javax.swing.JFrame {
         Conexao.getCon();
     }//GEN-LAST:event_btConectarActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btListaFuncActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btListaFuncActionPerformed
         ListaFuncionarios.getListFunc().setVisible(true);
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btListaFuncActionPerformed
 
     private void cxSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cxSenhaActionPerformed
         // TODO add your handling code here:
@@ -241,6 +255,10 @@ public class Principal extends javax.swing.JFrame {
     private void mnitDeslogarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnitDeslogarActionPerformed
         Login.getLoginUnic().setLog(-1);
     }//GEN-LAST:event_mnitDeslogarActionPerformed
+
+    private void mnitCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnitCadastrarActionPerformed
+        AdicionarCliente.getAddClienteUnic().setVisible(true);
+    }//GEN-LAST:event_mnitCadastrarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -293,13 +311,15 @@ public class Principal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btComprar;
     private javax.swing.JButton btConectar;
+    private javax.swing.JButton btListaFunc;
     private javax.swing.JButton btPesquisar;
     private javax.swing.JComboBox<String> cbLoja;
     private javax.swing.JPasswordField cxSenha;
-    private javax.swing.JButton jButton1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JMenu mnCadastrar;
     private javax.swing.JMenu mnLogin;
+    private javax.swing.JMenuItem mnitCadastrar;
     private javax.swing.JMenuItem mnitDeslogar;
     private javax.swing.JMenuItem mnitLogin;
     private javax.swing.JLabel rtSenha;

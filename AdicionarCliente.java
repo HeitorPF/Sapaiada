@@ -72,6 +72,11 @@ public class AdicionarCliente extends javax.swing.JFrame {
 
         btCadastrar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btCadastrar.setText("CADASTRAR");
+        btCadastrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btCadastrarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -145,6 +150,10 @@ public class AdicionarCliente extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCadastrarActionPerformed
+        Conexao.getCon().adicionarCliente(Integer.parseInt(cxId.getText()), cxNome.getText(), cxTelefone.getText(), cxEmail.getText(), cxSenha.getText(), Integer.parseInt(cxIdLoja.getText()));
+    }//GEN-LAST:event_btCadastrarActionPerformed
 
     /**
      * @param args the command line arguments
