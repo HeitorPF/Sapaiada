@@ -54,8 +54,8 @@ public class Conexao {
 
     public int adicionarRoupa(int idRoupa, int idLoja, float preco, String desc, int quant) {
         try {
-            String sql = "INSERT INTO Roupa (id_Roupa,id_Loja,preco_Roupa,desc_Roupa,qtd_Roupa) values"
-                    + " (" + idRoupa + "," + idLoja + "," + preco + ", '" + desc + "'," + quant + ");";
+            String sql = "BEGIN TRANSACTION; INSERT INTO Roupa (id_Roupa,id_Loja,preco_Roupa,desc_Roupa,qtd_Roupa) values"
+                    + " (" + idRoupa + "," + idLoja + "," + preco + ", '" + desc + "'," + quant + "); COMMIT";
             Statement stm = con.createStatement();
             int res = stm.executeUpdate(sql);
             return res;
@@ -154,7 +154,7 @@ public class Conexao {
             return null;
         }
     }
-    
+        
     public ResultSet executaBuscaFunc(int op, String pesquisa) {
         String pesq = "";
         try {
