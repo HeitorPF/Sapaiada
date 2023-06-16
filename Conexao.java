@@ -81,6 +81,7 @@ public class Conexao {
     public int comprarRoupa(int idRoupa, int quantDisp, int quantComp) {
         if(quantDisp >= quantComp){
             try{
+                String s = "INSERT INTO Item_Vendido values (id_Compra,id_Roupa,qtd_Compra,preco_Compra)";
                 String sql = "UPDATE roupa SET qtd_roupa = "+ (quantDisp-quantComp) +" WHERE id_roupa = " + idRoupa +";";
                 Statement stm = con.createStatement();
                 int res = stm.executeUpdate(sql);
