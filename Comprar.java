@@ -12,6 +12,7 @@ public class Comprar extends javax.swing.JFrame {
     }
     private Comprar() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**
