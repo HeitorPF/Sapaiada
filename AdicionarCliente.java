@@ -51,7 +51,7 @@ public class AdicionarCliente extends javax.swing.JFrame {
         cxIdLoja = new javax.swing.JTextField();
         btCadastrar = new javax.swing.JButton();
         btVoltar = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        btLimpar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Cadastro Cliente");
@@ -84,12 +84,17 @@ public class AdicionarCliente extends javax.swing.JFrame {
 
         btVoltar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btVoltar.setText("VOLTAR");
-
-        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jButton1.setText("LIMPAR");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btVoltar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btVoltarActionPerformed(evt);
+            }
+        });
+
+        btLimpar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btLimpar.setText("LIMPAR");
+        btLimpar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btLimparActionPerformed(evt);
             }
         });
 
@@ -103,7 +108,7 @@ public class AdicionarCliente extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(btVoltar)
                         .addGap(47, 47, 47)
-                        .addComponent(jButton1)
+                        .addComponent(btLimpar)
                         .addGap(29, 29, 29)
                         .addComponent(btCadastrar))
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -164,7 +169,7 @@ public class AdicionarCliente extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btVoltar)
                     .addComponent(btCadastrar)
-                    .addComponent(jButton1))
+                    .addComponent(btLimpar))
                 .addContainerGap(18, Short.MAX_VALUE))
         );
 
@@ -178,9 +183,14 @@ public class AdicionarCliente extends javax.swing.JFrame {
         limpar();
     }//GEN-LAST:event_btCadastrarActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btLimparActionPerformed
         limpar();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btLimparActionPerformed
+
+    private void btVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btVoltarActionPerformed
+        limpar();
+        this.dispose();
+    }//GEN-LAST:event_btVoltarActionPerformed
     
     public void limpar(){
         cxId.setText("");
@@ -192,6 +202,7 @@ public class AdicionarCliente extends javax.swing.JFrame {
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btCadastrar;
+    private javax.swing.JButton btLimpar;
     private javax.swing.JButton btVoltar;
     private javax.swing.JTextField cxEmail;
     private javax.swing.JTextField cxId;
@@ -199,7 +210,6 @@ public class AdicionarCliente extends javax.swing.JFrame {
     private javax.swing.JTextField cxNome;
     private javax.swing.JPasswordField cxSenha;
     private javax.swing.JTextField cxTelefone;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel rotEmail;
     private javax.swing.JLabel rotId;
     private javax.swing.JLabel rotIdLoja;

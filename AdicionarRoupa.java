@@ -170,6 +170,7 @@ public class AdicionarRoupa extends javax.swing.JFrame {
     }//GEN-LAST:event_btCadastrarActionPerformed
 
     private void btVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btVoltarActionPerformed
+        limpar();
         this.dispose();
     }//GEN-LAST:event_btVoltarActionPerformed
 

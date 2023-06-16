@@ -40,6 +40,7 @@ public class Login extends javax.swing.JFrame {
         cxEmail = new javax.swing.JTextField();
         btLogin = new javax.swing.JButton();
         cxSenha = new javax.swing.JPasswordField();
+        btVoltar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("LOGIN");
@@ -63,6 +64,14 @@ public class Login extends javax.swing.JFrame {
             }
         });
 
+        btVoltar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btVoltar.setText("VOLTAR");
+        btVoltar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btVoltarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -70,7 +79,9 @@ public class Login extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(137, 137, 137)
+                        .addContainerGap()
+                        .addComponent(btVoltar)
+                        .addGap(56, 56, 56)
                         .addComponent(btLogin))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(26, 26, 26)
@@ -95,7 +106,9 @@ public class Login extends javax.swing.JFrame {
                     .addComponent(rotSenha)
                     .addComponent(cxSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btLogin)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btLogin)
+                    .addComponent(btVoltar))
                 .addContainerGap(17, Short.MAX_VALUE))
         );
 
@@ -105,7 +118,6 @@ public class Login extends javax.swing.JFrame {
     private void btLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btLoginActionPerformed
         Conexao.getCon().executaBuscaFunc(0, "");
         for(Funcionario f : Banco.getBancoRoupaUnic().getBdFuncionario()){
-            System.out.println(f.getEmail());
             if(cxEmail.getText().equals(f.getEmail())){
                 if(cxSenha.getText().equals(f.getSenha())){
                     if(f.getCargFunc().equals("Chefe")){
@@ -129,7 +141,6 @@ public class Login extends javax.swing.JFrame {
         }
         Conexao.getCon().executaBuscaCliente();
         for(Cliente c : Banco.getBancoRoupaUnic().getBdCliente()){
-            System.out.println(c.getEmailCliente());
             if(cxEmail.getText().equals(c.getEmailCliente())){
                 if(cxSenha.getText().equals(c.getSenhaCliente())){
                     log = 0;
@@ -153,6 +164,11 @@ public class Login extends javax.swing.JFrame {
 
     }//GEN-LAST:event_formWindowClosed
 
+    private void btVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btVoltarActionPerformed
+        limpar();
+        this.dispose();
+    }//GEN-LAST:event_btVoltarActionPerformed
+
     public void botoesCertos(int login){
         ListaFuncionarios.getListFunc().getBtAdicionar().setVisible(false);
         Principal.getPrincipalUnic().getBtListaFunc().setVisible(false);
@@ -174,6 +190,7 @@ public class Login extends javax.swing.JFrame {
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btLogin;
+    private javax.swing.JButton btVoltar;
     private javax.swing.JTextField cxEmail;
     private javax.swing.JPasswordField cxSenha;
     private javax.swing.JLabel rotEmail;
