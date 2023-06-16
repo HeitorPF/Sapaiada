@@ -44,7 +44,7 @@ public class ListaFuncionarios extends javax.swing.JFrame {
         btAdicionar = new javax.swing.JButton();
         btBusca = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         tabFuncionarios.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -151,25 +151,6 @@ public class ListaFuncionarios extends javax.swing.JFrame {
     private void btAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAdicionarActionPerformed
         AdicionarFuncionario.getAddFuncUnic().setVisible(true);
     }//GEN-LAST:event_btAdicionarActionPerformed
-    
-    public void listaFuncionario(int pos){
-        DefaultTableModel tabModel = (DefaultTableModel) tabFuncionarios.getModel();
-        int posLin = 0;
-        Funcionario f = new Funcionario();
-        f.setIdFunc(Integer.parseInt(cxBuscar.getText()));
-        Conexao.getCon().executaBuscaFunc(pos,cxBuscar.getText());
-        tabModel.setRowCount(posLin);
-        for (int i = 0; i < Banco.getBancoRoupaUnic().bdFuncionario.size(); i++) {
-            if (f.getIdFunc() == Banco.getBancoRoupaUnic().bdFuncionario.get(i).getIdFunc()) {
-                tabModel.insertRow(posLin, new Object[]{Banco.getBancoRoupaUnic().bdFuncionario.get(i).getIdFunc(),
-                    Banco.getBancoRoupaUnic().bdFuncionario.get(i).getNomeFunc(),
-                    Banco.getBancoRoupaUnic().bdFuncionario.get(i).getEmail(),
-                    Banco.getBancoRoupaUnic().bdFuncionario.get(i).getCargFunc(),
-                    Banco.getBancoRoupaUnic().bdFuncionario.get(i).getIdLoja()});
-                posLin++;
-            }
-        }
-    }
     
     public void listarFunc(int pos) {
         Banco.getBancoRoupaUnic().getBdFuncionario().clear();

@@ -37,7 +37,8 @@ public class Principal extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         mnLogin = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
+        mnitLogin = new javax.swing.JMenuItem();
+        mnitDeslogar = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -124,8 +125,21 @@ public class Principal extends javax.swing.JFrame {
 
         mnLogin.setText("Login");
 
-        jMenuItem1.setText("Logar");
-        mnLogin.add(jMenuItem1);
+        mnitLogin.setText("Logar");
+        mnitLogin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnitLoginActionPerformed(evt);
+            }
+        });
+        mnLogin.add(mnitLogin);
+
+        mnitDeslogar.setText("Deslogar");
+        mnitDeslogar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnitDeslogarActionPerformed(evt);
+            }
+        });
+        mnLogin.add(mnitDeslogar);
 
         jMenuBar1.add(mnLogin);
 
@@ -213,6 +227,19 @@ public class Principal extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_cxSenhaActionPerformed
 
+    private void mnitLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnitLoginActionPerformed
+        if(Login.getLoginUnic().getLog() == -1){
+            Login.getLoginUnic().setVisible(true);
+        }
+        else{
+            System.out.println("Já está logado");
+        }
+    }//GEN-LAST:event_mnitLoginActionPerformed
+
+    private void mnitDeslogarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnitDeslogarActionPerformed
+        Login.getLoginUnic().setLog(-1);
+    }//GEN-LAST:event_mnitDeslogarActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -269,9 +296,10 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JPasswordField cxSenha;
     private javax.swing.JButton jButton1;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JMenu mnLogin;
+    private javax.swing.JMenuItem mnitDeslogar;
+    private javax.swing.JMenuItem mnitLogin;
     private javax.swing.JLabel rtSenha;
     private javax.swing.JTable tabRoupa;
     // End of variables declaration//GEN-END:variables

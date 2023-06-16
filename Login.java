@@ -1,14 +1,9 @@
 package sapaiada;
 
-/**
- *
- * @author joaop
- */
 public class Login extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Login
-     */
+    private int log = -1;
+    
     private Login() {
         initComponents();
         this.setLocationRelativeTo(null);
@@ -22,6 +17,13 @@ public class Login extends javax.swing.JFrame {
         return loginUnic;
     }
 
+    public void setLog(int log){
+        this.log = log;
+    }
+    
+    public int getLog(){
+        return log;
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -95,6 +97,40 @@ public class Login extends javax.swing.JFrame {
 
     private void btLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btLoginActionPerformed
         Conexao.getCon().executaBuscaFunc(0, "");
+        for(Funcionario f : Banco.getBancoRoupaUnic().getBdFuncionario()){
+            System.out.println(f.getEmail());
+            if(cxEmail.getText().equals(f.getEmail())){
+                if(cxSenha.getText().equals(f.getSenha())){
+                    if(f.getCargFunc().equals("Chefe")){
+                        log = 2;
+                    }
+                    else{
+                        log = 1;
+                    }
+                    System.out.println("Logou");
+                    dispose();
+                    break;
+                }
+                else{
+                    System.out.println("Senha incorreta");
+                }
+            }
+        }
+        Conexao.getCon().executaBuscaCliente();
+        for(Cliente c : Banco.getBancoRoupaUnic().getBdCliente()){
+            System.out.println(c.getEmailCliente());
+            if(cxEmail.getText().equals(c.getEmailCliente())){
+                if(cxSenha.getText().equals(c.getSenhaCliente())){
+                    log = 0;
+                    System.out.println("Logou");
+                    dispose();
+                    break;
+                }
+                else{
+                    System.out.println("Senha incorreta");
+                }
+            }
+        }
     }//GEN-LAST:event_btLoginActionPerformed
 
     /**
