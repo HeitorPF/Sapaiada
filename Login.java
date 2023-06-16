@@ -1,5 +1,7 @@
 package sapaiada;
 
+import javax.swing.JOptionPane;
+
 public class Login extends javax.swing.JFrame {
 
     private int log = -1;
@@ -41,6 +43,11 @@ public class Login extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("LOGIN");
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                formWindowClosed(evt);
+            }
+        });
 
         rotEmail.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         rotEmail.setText("EMAIL:");
@@ -107,12 +114,14 @@ public class Login extends javax.swing.JFrame {
                     else{
                         log = 1;
                     }
-                    System.out.println("Logou");
+                    JOptionPane.showMessageDialog(null, "Logou com sucesso!",
+                "Sucesso", 1);
                     dispose();
                     break;
                 }
                 else{
-                    System.out.println("Senha incorreta");
+                    JOptionPane.showMessageDialog(null, "Senha ou email incorreto",
+                "Erro", 1);
                 }
             }
         }
@@ -122,17 +131,38 @@ public class Login extends javax.swing.JFrame {
             if(cxEmail.getText().equals(c.getEmailCliente())){
                 if(cxSenha.getText().equals(c.getSenhaCliente())){
                     log = 0;
-                    System.out.println("Logou");
+                    JOptionPane.showMessageDialog(null, "Logou com sucesso!",
+                "Sucesso", 1);
                     dispose();
                     break;
                 }
                 else{
-                    System.out.println("Senha incorreta");
+                    JOptionPane.showMessageDialog(null, "Senha ou email incorreto",
+                "Erro", 1);
                 }
             }
         }
+        Principal.getPrincipalUnic().botoesCertos(log);
     }//GEN-LAST:event_btLoginActionPerformed
 
+    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
+
+    }//GEN-LAST:event_formWindowClosed
+
+    public void botoesCertos(int login){
+        ListaFuncionarios.getListFunc().getBtAdicionar().setVisible(false);
+        Principal.getPrincipalUnic().getBtListaFunc().setVisible(false);
+        System.out.println(log);
+        if(login == 1){ //funcionario normal
+            //add roupas
+            Principal.getPrincipalUnic().getBtListaFunc().setVisible(true);
+        }
+        if(login == 2){
+            //add roupa
+            Principal.getPrincipalUnic().getBtListaFunc().setVisible(true);
+            ListaFuncionarios.getListFunc().getBtAdicionar().setVisible(true);
+        }
+    }
     /**
      * @param args the command line arguments
      */

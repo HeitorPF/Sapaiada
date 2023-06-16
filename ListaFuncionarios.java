@@ -163,6 +163,10 @@ public class ListaFuncionarios extends javax.swing.JFrame {
             posLin++;
         }
     }
+    
+    public javax.swing.JButton getBtAdicionar(){
+        return btAdicionar;
+    }
 
     /**
      * @param args the command line arguments
