@@ -1,0 +1,289 @@
+--Criação das tabelas
+
+create table Cliente(
+	id_Cliente int,
+	nome_Cliente varchar(50) not null,
+	tele_cliente varchar(12),
+	email_Cliente varchar(40),
+	senha_Cliente varchar(15),
+	id_Loja int NOT NULL
+);
+
+create table Loja(
+	id_Loja int,
+	email_Loja varchar(45),
+	nome_Loja varchar(20),
+	endereco_Loja varchar(50),
+	tele_Loja varchar(12)
+);
+
+create table Funcionario(
+	id_Func int,
+	email_Func varchar(45),
+	nome_Func varchar(50),
+	cargo_Func varchar(15),
+	senha varchar(15),
+	id_Loja int
+);
+
+create table Compra(
+	id_Compra int,
+	horario_Compra timestamp,
+	valor_Compra real,
+	id_Cliente int
+);
+
+create table Roupa(
+	id_Roupa int,
+	id_Loja int,
+	preco_Roupa real,
+	desc_Roupa varchar(100),
+	qtd_Roupa int
+);
+
+create table Item_Vendido(
+	id_Compra int,
+	id_Roupa int,
+	qtd_Compra int,
+	preco_Compra real
+);
+
+-- Adição das chaves primarias
+
+alter table Cliente add primary key(id_Cliente);
+alter table Loja add primary key(id_Loja);
+alter table Funcionario add primary key(id_Func);
+alter table Compra add primary key(id_Compra);
+alter table Item_Vendido add primary key(id_Roupa,id_Compra);
+alter table Roupa add primary key(id_Roupa);
+
+-- Adição restrição chave estrangeira
+
+ALTER TABLE Cliente ADD FOREIGN KEY (id_Loja) REFERENCES Loja(id_Loja);
+ALTER TABLE Funcionario ADD FOREIGN KEY (id_Loja) REFERENCES Loja(id_Loja);
+ALTER TABLE Roupa ADD FOREIGN KEY (id_Loja) REFERENCES Loja(id_Loja);
+ALTER TABLE Compra ADD FOREIGN KEY (id_Cliente) REFERENCES Cliente(id_Cliente);
+ALTER TABLE Item_Vendido ADD FOREIGN KEY (id_Compra) REFERENCES Compra(id_Compra);
+ALTER TABLE Item_Vendido ADD FOREIGN KEY (id_Roupa) REFERENCES Roupa(id_Roupa);
+
+-- Inserção de dados na tabela
+
+-- Tabela Loja
+
+INSERT INTO Loja (id_Loja,email_Loja, nome_Loja, endereco_Loja, tele_Loja)
+VALUES (01,'sapaiadashirtsMG@gmail.com', 'Sapaiada Shirts MG', 'MG - Rua Abacaxi N150, Roma', '3735229198');
+
+INSERT INTO Loja (id_Loja,email_Loja, nome_Loja, endereco_Loja, tele_Loja)
+VALUES (02,'sapaiadashirtsPR@gmail.com', 'Sapaiada Shirts PR', 'PR - Avenida Pera N298, Centro', '4335207687');
+
+INSERT INTO Loja (id_Loja,email_Loja, nome_Loja, endereco_Loja, tele_Loja)
+VALUES (03,'sapaiadashirtsRJ@gmail.com', 'Sapaiada Shirts RJ', 'RJ - Rua Banana N66, Peixe', '2135211968');
+
+INSERT INTO Loja (id_Loja,email_Loja, nome_Loja, endereco_Loja, tele_Loja)
+VALUES (04,'sapaiadashirtsSP@gmail.com', 'Sapaiada Shirts SP', 'SP - Rua Maça N1080, Centro', '1135280763');
+
+INSERT INTO Loja (id_Loja,email_Loja, nome_Loja, endereco_Loja, tele_Loja)
+VALUES (05,'sapaiadashirtsAC@gmail.com', 'Sapaiada Shirts AC', 'AC - Rua Pitaia N31, Jardim', '8235274461');
+
+-- Tabela Cliente
+
+INSERT INTO Cliente values (101,'Eva Maya Costa','82991243567','eva@gmail.com','a123',05);
+
+INSERT INTO Cliente  values (102,'Rafael Amaral','37992495017','rafa@gmail.com','b123',01);
+
+INSERT INTO Cliente  values (103,'Aurelio Carlos','37907481734','lelo@gmail.com','c123',01);
+
+INSERT INTO Cliente  values (104,'Daisy Gatanica','37964710295','daisy@gmail.com','d123',01);
+
+INSERT INTO Cliente  values (105,'Julia Maria','43913082776','juju@gmail.com','e123',02);
+
+INSERT INTO Cliente  values (106,'Gustavo Rodrigues','43922408577','gugu@gmail.com','f123',02);
+
+INSERT INTO Cliente  values (107,'Rubia Alice','43956233198','rubi@gmail.com','g123',02);
+
+INSERT INTO Cliente  values (108,'Pedro Gontijo','21911086947','pg@gmail.com','h123',03);
+
+INSERT INTO Cliente  values (109,'Luna Rodrigues','21984617726','luna@gmail.com','i123',03);
+
+INSERT INTO Cliente  values (110,'Gabrielly Sabrine','21922819473','gaby@gmail.com','j123',03);
+
+INSERT INTO Cliente  values (111,'Kevin Silva','11988215630','kevin@gmail.com','k123',04);
+
+INSERT INTO Cliente  values (112,'Isadora Melancia','11987364811','isa@gmail.com','l123',04);
+
+INSERT INTO Cliente  values (113,'Jubiscleton Couto','11945619844','jubi@gmail.com','m123',04);
+
+INSERT INTO Cliente  values (114,'Neeko Souls','82931988374','neeko@gmail.com','n123',05);
+
+INSERT INTO Cliente  values (115,'Maria Cecilia','829234001722','ceci@gmail.com','o123',05);
+
+-- Funcionarios 
+
+INSERT INTO Funcionario  values
+(1001,'danizinhaGataS2@gmail.com','Daniela Rodrigues','Coordenadora','a321',01);
+
+INSERT INTO Funcionario values
+(1002,'heitorPF@gmail.com','Heitor Prato Feito','Chefe','b321',02);
+
+INSERT INTO Funcionario  values
+(1003,'joaozinhoBrabo@gmail.com','Joao Vitor Alves','Gerente','c321',03);
+
+INSERT INTO Funcionario  values
+(1004,'BrenaManauara@gmail.com','Brena Freitas','Administradora','d321',04);
+
+INSERT INTO Funcionario  values
+(1005,'MarceloGoias@gmail.com','Marcelo Vieira','Analista','e321',05);
+
+-- Roupas
+
+INSERT INTO Roupa (id_Roupa,id_Loja,preco_Roupa,desc_Roupa,qtd_Roupa) values
+(2001,01,100.50,'Camiseta preta com estampa de sapo verde',120);
+
+INSERT INTO Roupa (id_Roupa,id_Loja,preco_Roupa,desc_Roupa,qtd_Roupa) values
+(2002,01,200.49,'Calça moletom tecido verde sem bolsos',80);
+
+INSERT INTO Roupa (id_Roupa,id_Loja,preco_Roupa,desc_Roupa,qtd_Roupa) values
+(2003,02,150.99,'Blusa de frio moletom branca com estampa de pantano',30);
+
+INSERT INTO Roupa (id_Roupa,id_Loja,preco_Roupa,desc_Roupa,qtd_Roupa) values
+(2004,02,180.99,'Bermuda jeans escuro com rasgos',50);
+
+INSERT INTO Roupa (id_Roupa,id_Loja,preco_Roupa,desc_Roupa,qtd_Roupa) values
+(2005,03,250.39,'Jaqueta Branca com estampa de rã touro',100);
+
+INSERT INTO Roupa (id_Roupa,id_Loja,preco_Roupa,desc_Roupa,qtd_Roupa) values
+(2006,03,80.99,'Calça jeans com cinto de sapo',33);
+
+INSERT INTO Roupa (id_Roupa,id_Loja,preco_Roupa,desc_Roupa,qtd_Roupa) values
+(2007,04,145.99,'Camiseta Verde com estampa de girinos brancos ',45);
+
+INSERT INTO Roupa (id_Roupa,id_Loja,preco_Roupa,desc_Roupa,qtd_Roupa) values
+(2008,04,120.55,'Shorts branco rasgado com detalhes verdes',89);
+
+INSERT INTO Roupa (id_Roupa,id_Loja,preco_Roupa,desc_Roupa,qtd_Roupa) values
+(2009,05,199.99,'Regata branco com estampa de sapo malhando',15);
+
+INSERT INTO Roupa (id_Roupa,id_Loja,preco_Roupa,desc_Roupa,qtd_Roupa) values
+(2010,05,70.99,'Calça boca de sino verde',20);
+
+-- Compras
+
+INSERT INTO Compra (id_Compra,horario_Compra,valor_Compra,id_Cliente) values
+(10001,'2023-06-10 10:30:00',501.99,102);
+
+INSERT INTO Compra (id_Compra,horario_Compra,valor_Compra,id_Cliente) values
+(10002,'2023-05-23 12:20:00',482.97,105);
+
+INSERT INTO Compra (id_Compra,horario_Compra,valor_Compra,id_Cliente) values
+(10003,'2023-04-12 09:10:00',412.37,110);
+
+INSERT INTO Compra (id_Compra,horario_Compra,valor_Compra,id_Cliente) values
+(10004,'2023-03-31 18:55:00',704.51,112);
+
+INSERT INTO Compra (id_Compra,horario_Compra,valor_Compra,id_Cliente) values
+(10005,'2023-03-17 20:40:00',270.98,101);
+
+-- Item_Vendido
+
+INSERT INTO Item_Vendido (id_Compra,id_Roupa,qtd_Compra,preco_Compra) values
+(10001,2001,3,301.5);
+
+INSERT INTO Item_Vendido (id_Compra,id_Roupa,qtd_Compra,preco_Compra) values
+(10001,2002,1,200.49);
+
+INSERT INTO Item_Vendido (id_Compra,id_Roupa,qtd_Compra,preco_Compra) values
+(10002,2003,2,301.98);
+
+INSERT INTO Item_Vendido (id_Compra,id_Roupa,qtd_Compra,preco_Compra) values
+(10002,2004,1,180.99);
+
+INSERT INTO Item_Vendido (id_Compra,id_Roupa,qtd_Compra,preco_Compra) values
+(10003,2005,1,250.39);
+
+INSERT INTO Item_Vendido (id_Compra,id_Roupa,qtd_Compra,preco_Compra) values
+(10003,2006,2,161.98);
+
+INSERT INTO Item_Vendido (id_Compra,id_Roupa,qtd_Compra,preco_Compra) values
+(10004,2007,4,583.96);
+
+INSERT INTO Item_Vendido (id_Compra,id_Roupa,qtd_Compra,preco_Compra) values
+(10004,2008,1,120.55);
+
+INSERT INTO Item_Vendido (id_Compra,id_Roupa,qtd_Compra,preco_Compra) values
+(10005,2009,1,199.99);
+
+INSERT INTO Item_Vendido (id_Compra,id_Roupa,qtd_Compra,preco_Compra) values
+(10005,2010,1,70.99);
+
+-- Tabela Backup
+
+create table backupFuncionarios(
+	id_Func int,
+	email_Func varchar(45),
+	nome_Func varchar(50),
+	cargo_Func varchar(15),
+	id_Loja int,
+	usuario varchar(255),
+	data_exclusao Timestamp default now()
+);
+
+-- funcao trigger
+
+create or replace function fazBackupFunc() returns trigger as
+$$
+begin
+	insert into BackupFuncionarios values (old.id_Func,old.email_Func,old.nome_Func,old.cargo_Func,old.id_Loja, current_user);
+	return old;
+end;
+$$ Language plpgsql;
+
+create trigger fazbackupFunc after delete on Funcionario for each row execute procedure fazbackupFunc();
+
+--Criação dos indíces 
+
+CREATE INDEX indxRoupa ON Roupa(id_Loja);
+
+CREATE INDEX indxCliente ON Cliente(id_Loja);
+
+CREATE INDEX indxFuncionario ON Funcionario(id_Loja);
+
+CREATE INDEX indxItem_Vendido ON Item_Vendido(id_Compra);
+
+--Criação da view
+
+create view RelatorioCompras as 
+select id_cliente, nome_cliente, id_compra, valor_Compra, tele_cliente, id_loja
+from loja join cliente using (id_loja) natural join compra
+order by id_cliente, id_loja;
+
+-- trigger de inserção na view: 
+
+create or replace function relatorioCompras() returns trigger as 
+$$
+begin
+  INSERT INTO Compra (id_Compra, horario_Compra, valor_Compra, id_Cliente)
+  VALUES (NEW.id_Compra, current_timestamp, NEW.valor_Compra, NEW.id_Cliente);
+
+  INSERT INTO Item_Vendido (id_Compra, id_Roupa, qtd_Compra, preco_Compra)
+  SELECT NEW.id_Compra, r.id_Roupa, r.qtd_Roupa, r.preco_Roupa
+  FROM Roupa r
+  WHERE r.id_Loja = NEW.id_Loja;
+
+  return new;
+end;
+$$ language plpgsql;
+
+
+create trigger relatorioCompras instead of insert on RelatorioCompras for each row
+execute function relatorioCompras();
+
+-- Criação de usuário e atribuição 
+
+create role visualizacao with 
+login
+password '1234';
+
+grant select on all tables in Schema public to visualizacao;
+grant insert on relatorioCompras to visualizacao;
+
+--
