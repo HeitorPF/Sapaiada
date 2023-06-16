@@ -210,8 +210,8 @@ public class Principal extends javax.swing.JFrame {
     private void btComprarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btComprarActionPerformed
         Roupa r;
         r = Banco.getBancoRoupaUnic().getBdRoupa().get(tabRoupa.getSelectedRow());
-        Conexao.getCon().comprarRoupa(r.getIdRoupa(), r.getQuant(), 2);
-        listarRoupa();
+        Comprar.getComprarUnic().setCaixas(r);
+        Comprar.getComprarUnic().setVisible(true);
     }//GEN-LAST:event_btComprarActionPerformed
 
     private void btConectarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btConectarActionPerformed
