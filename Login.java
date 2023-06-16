@@ -178,7 +178,6 @@ public class Login extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_btVoltarActionPerformed
 
-    
     public void limpar(){
         cxEmail.setText("");
         cxSenha.setText("");

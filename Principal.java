@@ -340,8 +340,13 @@ public class Principal extends javax.swing.JFrame {
         return btListaFunc;
     }
     
+    public javax.swing.JButton getBtAddRoupa(){
+        return btAddRoupa;
+    }
+    
     public void botoesCertos(int login){
         ListaFuncionarios.getListFunc().getBtAdicionar().setVisible(false);
+        ListaFuncionarios.getListFunc().getBtDeletar().setVisible(false);
         btListaFunc.setVisible(false);
         btAddRoupa.setVisible(false);
         if(login == 1){ //funcionario normal
@@ -351,6 +356,7 @@ public class Principal extends javax.swing.JFrame {
         if(login == 2){
             btAddRoupa.setVisible(true);
             ListaFuncionarios.getListFunc().getBtAdicionar().setVisible(true);
+            ListaFuncionarios.getListFunc().getBtDeletar().setVisible(true);
             btListaFunc.setVisible(true);
         }
     }

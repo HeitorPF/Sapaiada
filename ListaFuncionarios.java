@@ -43,6 +43,7 @@ public class ListaFuncionarios extends javax.swing.JFrame {
         btVoltar = new javax.swing.JButton();
         btAdicionar = new javax.swing.JButton();
         btBusca = new javax.swing.JButton();
+        btDeletar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -93,6 +94,14 @@ public class ListaFuncionarios extends javax.swing.JFrame {
             }
         });
 
+        btDeletar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btDeletar.setText("DELETAR");
+        btDeletar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btDeletarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -112,6 +121,8 @@ public class ListaFuncionarios extends javax.swing.JFrame {
                 .addGap(14, 14, 14)
                 .addComponent(btVoltar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btDeletar)
+                .addGap(123, 123, 123)
                 .addComponent(btAdicionar)
                 .addGap(15, 15, 15))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -134,7 +145,8 @@ public class ListaFuncionarios extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btVoltar)
-                    .addComponent(btAdicionar))
+                    .addComponent(btAdicionar)
+                    .addComponent(btDeletar))
                 .addContainerGap(14, Short.MAX_VALUE))
         );
 
@@ -156,6 +168,10 @@ public class ListaFuncionarios extends javax.swing.JFrame {
     private void btAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAdicionarActionPerformed
         AdicionarFuncionario.getAddFuncUnic().setVisible(true);
     }//GEN-LAST:event_btAdicionarActionPerformed
+
+    private void btDeletarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btDeletarActionPerformed
+        deletarFunc();
+    }//GEN-LAST:event_btDeletarActionPerformed
     
     public void listarFunc(int pos) {
         Banco.getBancoRoupaUnic().getBdFuncionario().clear();
@@ -169,10 +185,30 @@ public class ListaFuncionarios extends javax.swing.JFrame {
         }
     }
     
+    public void deletarFunc(){
+        if (tabFuncionarios.getSelectedRow() == -1)
+            JOptionPane.showMessageDialog(
+                    null,
+                    "Selecione algum violão na tabela!!",
+                    "Atenção!!",
+                    1);
+        else{
+            Conexao.getCon().deletaFunc((int) tabFuncionarios.getValueAt(tabFuncionarios.getSelectedRow(), 0));
+            JOptionPane.showMessageDialog(
+                    null,
+                    "Funcionario deletado com sucesso!",
+                    "Atenção!!",
+                    1);
+        }
+    }
+    
     public javax.swing.JButton getBtAdicionar(){
         return btAdicionar;
     }
 
+    public javax.swing.JButton getBtDeletar(){
+        return btDeletar;
+    }
     public void limpar(){
         cxBuscar.setText("");
     }
@@ -180,6 +216,7 @@ public class ListaFuncionarios extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btAdicionar;
     private javax.swing.JButton btBusca;
+    private javax.swing.JButton btDeletar;
     private javax.swing.JButton btVoltar;
     private javax.swing.JComboBox<String> cmbItemBusca;
     private javax.swing.JTextField cxBuscar;
