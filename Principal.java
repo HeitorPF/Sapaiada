@@ -245,10 +245,20 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_cbLojaActionPerformed
 
     private void btComprarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btComprarActionPerformed
-        Roupa r;
-        r = Banco.getBancoRoupaUnic().getBdRoupa().get(tabRoupa.getSelectedRow());
-        Comprar.getComprarUnic().setCaixas(r);
-        Comprar.getComprarUnic().setVisible(true);
+        if(Login.getLoginUnic().getLog() == -1){
+            JOptionPane.showMessageDialog(null, "Faça login primeiro!!",
+                    "Login", 1);
+        }
+        else if(Login.getLoginUnic().getLog() != 0){
+            JOptionPane.showMessageDialog(null, "Faça login como cliente!!",
+                    "Login", 1);
+        }
+        else{
+            Roupa r;
+            r = Banco.getBancoRoupaUnic().getBdRoupa().get(tabRoupa.getSelectedRow());
+            Comprar.getComprarUnic().setCaixas(r);
+            Comprar.getComprarUnic().setVisible(true);
+        } 
     }//GEN-LAST:event_btComprarActionPerformed
 
     private void btConectarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btConectarActionPerformed

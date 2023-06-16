@@ -166,8 +166,8 @@ public class ListaFuncionarios extends javax.swing.JFrame {
     private void btBuscaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btBuscaActionPerformed
         int pos = cmbItemBusca.getSelectedIndex();
         Conexao.getCon().executaBuscaFunc(pos, cxBuscar.getText());
-        limpar();
         listarFunc(pos);
+        limpar();
     }//GEN-LAST:event_btBuscaActionPerformed
 
     private void btAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAdicionarActionPerformed
