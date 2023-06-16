@@ -98,6 +98,18 @@ public class Conexao {
             return -1;
         }
     }
+    
+    public int deletaFunc(int idFunc){
+        try{
+            String sql = "DELETE FROM funcionario WHERE id_Func = " +idFunc;
+            Statement stm = con.createStatement();
+            int res = stm.executeUpdate(sql);
+            return res;
+        }
+        catch(Exception e){
+            return 0;
+        }
+    }
 
     public ResultSet executaBuscaLoja(int loja) {
         try {
