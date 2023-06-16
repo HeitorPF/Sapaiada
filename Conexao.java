@@ -79,16 +79,16 @@ public class Conexao {
     }
     
     public int comprarRoupa(int idCompra, Roupa r, int quantComp) {
-        int quant = 0;
+        int cont = 0;
         if(r.getQuant() >= quantComp){
             float total = 0;
-            while(quant <= quantComp){
+            while(cont < quantComp){
                 total = total + r.getPreco();
-                quant ++;
+                cont ++;
             }
             try{
                 String insertCompra = "INSERT INTO compra values("+ idCompra +",current_date, " + total+","+ Login.getLoginUnic().getCliente().getIdCliente() +")";
-                String insertIV = "INSERT INTO Item_Vendido values ("+ idCompra +","+ r.getIdRoupa()+","+ quantComp+",total)";
+                String insertIV = "INSERT INTO Item_Vendido values ("+ idCompra +","+ r.getIdRoupa()+","+ quantComp+","+ total +")";
                 String update = "UPDATE roupa SET qtd_roupa = "+ (r.getQuant()-quantComp) +" WHERE id_roupa = " + r.getIdRoupa() +";";
                 Statement stm = con.createStatement();
                 stm.executeUpdate(update);
