@@ -15,6 +15,8 @@ public class Principal extends javax.swing.JFrame {
     private static String senhaPostgres = "";
     public Principal() {
         initComponents();
+        this.setLocationRelativeTo(null);
+
     }
 
     /**
