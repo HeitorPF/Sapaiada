@@ -203,7 +203,6 @@ public class Conexao {
                     c.setTeleCliente(teleCliente);
                     c.setSenhaCliente(senhaCliente);
                     c.setIdLoja(idLoja);
-                    System.out.println("adicionando: " + c.getNomeCliente());
                     Banco.getBancoRoupaUnic().getBdCliente().add(c);
                 }
             } catch (SQLException e) {

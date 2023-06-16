@@ -178,20 +178,6 @@ public class Login extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_btVoltarActionPerformed
 
-    public void botoesCertos(int login){
-        ListaFuncionarios.getListFunc().getBtAdicionar().setVisible(false);
-        Principal.getPrincipalUnic().getBtListaFunc().setVisible(false);
-        System.out.println(log);
-        if(login == 1){ //funcionario normal
-            //add roupas
-            Principal.getPrincipalUnic().getBtListaFunc().setVisible(true);
-        }
-        if(login == 2){
-            //add roupa
-            Principal.getPrincipalUnic().getBtListaFunc().setVisible(true);
-            ListaFuncionarios.getListFunc().getBtAdicionar().setVisible(true);
-        }
-    }
     
     public void limpar(){
         cxEmail.setText("");
