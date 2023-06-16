@@ -167,6 +167,8 @@ public class AdicionarRoupa extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(null, "Cadastrado com sucesso!",
                                     "Cadastro", 1);
         limpar();
+        dispose();
+        Principal.getPrincipalUnic().listarRoupa();
     }//GEN-LAST:event_btCadastrarActionPerformed
 
     private void btVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btVoltarActionPerformed

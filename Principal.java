@@ -232,8 +232,10 @@ public class Principal extends javax.swing.JFrame {
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
         log = Login.getLoginUnic().getLog();
-        //Login.getLoginUnic().botoesCertos(log);
         botoesCertos(log);
+        if(log != -1){
+            listarRoupa();
+        }
     }//GEN-LAST:event_formWindowActivated
 
     private void btPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btPesquisarActionPerformed

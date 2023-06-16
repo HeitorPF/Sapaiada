@@ -188,6 +188,7 @@ public class AdicionarFuncionario extends javax.swing.JFrame {
     private void btCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCadastrarActionPerformed
         addFunc();
         limpar();
+        dispose();
     }//GEN-LAST:event_btCadastrarActionPerformed
 
     private void btLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btLimparActionPerformed
