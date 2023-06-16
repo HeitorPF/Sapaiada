@@ -1,19 +1,20 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package sapaiada;
 
 import javax.swing.table.DefaultTableModel;
 
-/**
- *
- * @author joaop
- */
+
 public class Principal extends javax.swing.JFrame {
 
+    private int log;
+    private static Principal principalUnic;
+    public static Principal getPrincipalUnic(){
+        if(principalUnic == null){
+            principalUnic = new Principal();
+        }
+        return principalUnic;
+    }
     private static String senhaPostgres = "";
-    public Principal() {
+    private Principal() {
         initComponents();
         this.setLocationRelativeTo(null);
     }
@@ -231,7 +232,9 @@ public class Principal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
-
+        log = Login.getLoginUnic().getLog();
+        //Login.getLoginUnic().botoesCertos(log);
+        botoesCertos(log);
     }//GEN-LAST:event_formWindowActivated
 
     private void btPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btPesquisarActionPerformed
@@ -273,6 +276,9 @@ public class Principal extends javax.swing.JFrame {
 
     private void mnitDeslogarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnitDeslogarActionPerformed
         Login.getLoginUnic().setLog(-1);
+        setLog(-1);
+        System.out.println(log);
+        botoesCertos(log);
     }//GEN-LAST:event_mnitDeslogarActionPerformed
 
     private void mnitCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnitCadastrarActionPerformed
@@ -330,6 +336,25 @@ public class Principal extends javax.swing.JFrame {
             posLin++;
         }
     }
+    
+    public javax.swing.JButton getBtListaFunc(){
+        return btListaFunc;
+    }
+    
+    public void botoesCertos(int login){
+        ListaFuncionarios.getListFunc().getBtAdicionar().setVisible(false);
+        btListaFunc.setVisible(false);
+        System.out.println("Log: " + login);
+        if(login == 1){ //funcionario normal
+            //add roupa
+            btListaFunc.setVisible(true);  
+        }
+        if(login == 2){
+            //add roupa
+            ListaFuncionarios.getListFunc().getBtAdicionar().setVisible(true);
+            btListaFunc.setVisible(true);
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btComprar;
@@ -350,6 +375,10 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JTable tabRoupa;
     // End of variables declaration//GEN-END:variables
 
+    
+    public void setLog(int log){
+        this.log = log;
+    }
     public static String getSenhaPostgres() {
         return senhaPostgres;
     }
