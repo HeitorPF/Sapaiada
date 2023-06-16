@@ -8,6 +8,7 @@ public class Banco {
 
     static List<Roupa> bdRoupa;
     static List<Funcionario> bdFuncionario;
+    static List<Cliente> bdCliente;
     
     private static Banco bancoRoupaUnic;
     public static Banco getBancoRoupaUnic() {
@@ -20,6 +21,7 @@ public class Banco {
     private Banco() {
         bdRoupa = new ArrayList<>();
         bdFuncionario = new ArrayList<>();
+        bdCliente = new ArrayList<>();
     }
     
     public List<Roupa> getBdRoupa(){
@@ -27,6 +29,9 @@ public class Banco {
     }
     public List<Funcionario> getBdFuncionario(){
         return bdFuncionario;
+    }
+    public List<Cliente> getBdCliente(){
+        return bdCliente;
     }
     
 }

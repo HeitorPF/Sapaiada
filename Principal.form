@@ -9,10 +9,21 @@
             <Property name="text" type="java.lang.String" value="Login"/>
           </Properties>
           <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem1">
+            <MenuItem class="javax.swing.JMenuItem" name="mnitLogin">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Logar"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mnitLoginActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="mnitDeslogar">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Deslogar"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mnitDeslogarActionPerformed"/>
+              </Events>
             </MenuItem>
           </SubComponents>
         </Menu>

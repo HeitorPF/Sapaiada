@@ -39,7 +39,7 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Component id="cxEmail" max="32767" attributes="0"/>
-                          <Component id="jPasswordField1" pref="220" max="32767" attributes="0"/>
+                          <Component id="cxSenha" pref="220" max="32767" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -58,7 +58,7 @@
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="rotSenha" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jPasswordField1" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="cxSenha" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Component id="btLogin" min="-2" max="-2" attributes="0"/>
@@ -97,7 +97,7 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btLoginActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JPasswordField" name="jPasswordField1">
+    <Component class="javax.swing.JPasswordField" name="cxSenha">
     </Component>
   </SubComponents>
 </Form>

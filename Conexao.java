@@ -168,4 +168,37 @@ public class Conexao {
             return null;
         }
     }
+    
+    public ResultSet executaBuscaCliente() {
+        try {
+            Statement stm = con.createStatement();
+            ResultSet rs = null;
+            rs = stm.executeQuery("SELECT * FROM cliente");
+            try {
+                while (rs.next()) {
+                    Cliente c = new Cliente();
+                    int idCliente = rs.getInt("id_Cliente");
+                    String emailCliente = rs.getString("email_Cliente");
+                    String nomeCliente = rs.getString("nome_Cliente");
+                    String teleCliente = rs.getString("tele_cliente");
+                    String senhaCliente = rs.getString("senha_Cliente");
+                    int idLoja = rs.getInt("id_Loja");
+                    c.setIdCliente(idCliente);
+                    c.setEmailCliente(emailCliente);
+                    c.setNomeCliente(nomeCliente);
+                    c.setTeleCliente(teleCliente);
+                    c.setSenhaCliente(senhaCliente);
+                    c.setIdLoja(idLoja);
+                    System.out.println("adicionando: " + c.getNomeCliente());
+                    Banco.getBancoRoupaUnic().getBdCliente().add(c);
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+            return rs;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
 }
