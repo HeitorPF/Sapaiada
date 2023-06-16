@@ -5,7 +5,8 @@ import javax.swing.JOptionPane;
 public class Login extends javax.swing.JFrame {
 
     private int log = -1;
-    
+    private Cliente cli = new Cliente();
+    private Funcionario fun = new Funcionario();
     private Login() {
         initComponents();
         this.setLocationRelativeTo(null);
@@ -114,6 +115,7 @@ public class Login extends javax.swing.JFrame {
                     else{
                         log = 1;
                     }
+                    fun.setIdFunc(f.getIdFunc());
                     JOptionPane.showMessageDialog(null, "Logou com sucesso!",
                 "Sucesso", 1);
                     dispose();
@@ -131,6 +133,9 @@ public class Login extends javax.swing.JFrame {
             if(cxEmail.getText().equals(c.getEmailCliente())){
                 if(cxSenha.getText().equals(c.getSenhaCliente())){
                     log = 0;
+                    cli.setIdCliente(c.getIdCliente());
+                    cli.setNomeCliente(c.getNomeCliente());
+                    cli.setTeleCliente(c.getTeleCliente());
                     JOptionPane.showMessageDialog(null, "Logou com sucesso!",
                 "Sucesso", 1);
                     dispose();
@@ -149,6 +154,10 @@ public class Login extends javax.swing.JFrame {
 
     }//GEN-LAST:event_formWindowClosed
 
+    public Cliente getCliente(){
+        return cli;
+    }
+    
     public void botoesCertos(int login){
         ListaFuncionarios.getListFunc().getBtAdicionar().setVisible(false);
         Principal.getPrincipalUnic().getBtListaFunc().setVisible(false);

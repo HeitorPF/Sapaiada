@@ -37,7 +37,7 @@ public class Principal extends javax.swing.JFrame {
         btConectar = new javax.swing.JButton();
         cxSenha = new javax.swing.JPasswordField();
         btListaFunc = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        btAddRoupa = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         mnLogin = new javax.swing.JMenu();
         mnitLogin = new javax.swing.JMenuItem();
@@ -128,10 +128,10 @@ public class Principal extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setText("ADICIONAR ROUPAS");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btAddRoupa.setText("ADICIONAR ROUPAS");
+        btAddRoupa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btAddRoupaActionPerformed(evt);
             }
         });
 
@@ -190,7 +190,7 @@ public class Principal extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addContainerGap(20, Short.MAX_VALUE)
-                                .addComponent(jButton1)
+                                .addComponent(btAddRoupa)
                                 .addGap(18, 18, 18))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(48, 48, 48)
@@ -222,7 +222,7 @@ public class Principal extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(btConectar)
                         .addGap(54, 54, 54)
-                        .addComponent(jButton1)
+                        .addComponent(btAddRoupa)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btListaFunc)
                         .addGap(82, 82, 82))))
@@ -285,9 +285,9 @@ public class Principal extends javax.swing.JFrame {
         AdicionarCliente.getAddClienteUnic().setVisible(true);
     }//GEN-LAST:event_mnitCadastrarActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btAddRoupaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAddRoupaActionPerformed
         AdicionarRoupa.getAddRoupaUnic().setVisible(true);
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btAddRoupaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -344,26 +344,27 @@ public class Principal extends javax.swing.JFrame {
     public void botoesCertos(int login){
         ListaFuncionarios.getListFunc().getBtAdicionar().setVisible(false);
         btListaFunc.setVisible(false);
+        btAddRoupa.setVisible(false);
         System.out.println("Log: " + login);
         if(login == 1){ //funcionario normal
-            //add roupa
+            btAddRoupa.setVisible(true);
             btListaFunc.setVisible(true);  
         }
         if(login == 2){
-            //add roupa
+            btAddRoupa.setVisible(true);
             ListaFuncionarios.getListFunc().getBtAdicionar().setVisible(true);
             btListaFunc.setVisible(true);
         }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btAddRoupa;
     private javax.swing.JButton btComprar;
     private javax.swing.JButton btConectar;
     private javax.swing.JButton btListaFunc;
     private javax.swing.JButton btPesquisar;
     private javax.swing.JComboBox<String> cbLoja;
     private javax.swing.JPasswordField cxSenha;
-    private javax.swing.JButton jButton1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JMenu mnCadastrar;
