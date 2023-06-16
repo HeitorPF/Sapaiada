@@ -4,6 +4,8 @@
  */
 package sapaiada;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author joaop
@@ -48,6 +50,8 @@ public class AdicionarCliente extends javax.swing.JFrame {
         cxSenha = new javax.swing.JPasswordField();
         cxIdLoja = new javax.swing.JTextField();
         btCadastrar = new javax.swing.JButton();
+        btVoltar = new javax.swing.JButton();
+        btLimpar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Cadastro Cliente");
@@ -78,43 +82,61 @@ public class AdicionarCliente extends javax.swing.JFrame {
             }
         });
 
+        btVoltar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btVoltar.setText("VOLTAR");
+        btVoltar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btVoltarActionPerformed(evt);
+            }
+        });
+
+        btLimpar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btLimpar.setText("LIMPAR");
+        btLimpar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btLimparActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(19, 19, 19)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(rotIdLoja)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(cxIdLoja))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(rotSenha)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(cxSenha))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(rotEmail)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(cxEmail))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(rotTelefone)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(cxTelefone))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(rotNome)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(cxNome, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(rotId)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(cxId, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(93, 93, 93)
-                        .addComponent(btCadastrar)))
-                .addContainerGap(29, Short.MAX_VALUE))
+                        .addComponent(btVoltar)
+                        .addGap(47, 47, 47)
+                        .addComponent(btLimpar)
+                        .addGap(29, 29, 29)
+                        .addComponent(btCadastrar))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(rotTelefone)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(cxTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(rotNome)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(cxNome))
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(rotId)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(cxId))
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(rotIdLoja)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(cxIdLoja, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(rotSenha)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(cxSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(rotEmail)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(cxEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 284, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(23, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -143,9 +165,12 @@ public class AdicionarCliente extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(rotIdLoja)
                     .addComponent(cxIdLoja, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(btCadastrar)
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btVoltar)
+                    .addComponent(btCadastrar)
+                    .addComponent(btLimpar))
+                .addContainerGap(18, Short.MAX_VALUE))
         );
 
         pack();
@@ -153,45 +178,32 @@ public class AdicionarCliente extends javax.swing.JFrame {
 
     private void btCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCadastrarActionPerformed
         Conexao.getCon().adicionarCliente(Integer.parseInt(cxId.getText()), cxNome.getText(), cxTelefone.getText(), cxEmail.getText(), cxSenha.getText(), Integer.parseInt(cxIdLoja.getText()));
+        JOptionPane.showMessageDialog(null, "Cadastrado com sucesso!",
+                "Cadastro", 1);
+        limpar();
     }//GEN-LAST:event_btCadastrarActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AdicionarCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AdicionarCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AdicionarCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AdicionarCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
+    private void btLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btLimparActionPerformed
+        limpar();
+    }//GEN-LAST:event_btLimparActionPerformed
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new AdicionarCliente().setVisible(true);
-            }
-        });
+    private void btVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btVoltarActionPerformed
+        limpar();
+        this.dispose();
+    }//GEN-LAST:event_btVoltarActionPerformed
+    
+    public void limpar(){
+        cxId.setText("");
+        cxNome.setText("");
+        cxTelefone.setText("");
+        cxEmail.setText("");
+        cxSenha.setText("");
+        cxIdLoja.setText("");
     }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btCadastrar;
+    private javax.swing.JButton btLimpar;
+    private javax.swing.JButton btVoltar;
     private javax.swing.JTextField cxEmail;
     private javax.swing.JTextField cxId;
     private javax.swing.JTextField cxIdLoja;

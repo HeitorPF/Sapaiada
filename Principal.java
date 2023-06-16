@@ -1,5 +1,6 @@
 package sapaiada;
 
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 
@@ -54,10 +55,7 @@ public class Principal extends javax.swing.JFrame {
 
         tabRoupa.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+
             },
             new String [] {
                 "Roupa", "Preço", "Quantidade"
@@ -92,14 +90,16 @@ public class Principal extends javax.swing.JFrame {
             }
         });
 
-        btComprar.setText("Comprar");
+        btComprar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btComprar.setText("COMPRAR");
         btComprar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btComprarActionPerformed(evt);
             }
         });
 
-        btPesquisar.setText("Pesquisar");
+        btPesquisar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btPesquisar.setText("PESQUISAR");
         btPesquisar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btPesquisarActionPerformed(evt);
@@ -108,7 +108,8 @@ public class Principal extends javax.swing.JFrame {
 
         rtSenha.setText("Senha Postgresql:");
 
-        btConectar.setText("Conectar");
+        btConectar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btConectar.setText("CONECTAR");
         btConectar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btConectarActionPerformed(evt);
@@ -121,13 +122,16 @@ public class Principal extends javax.swing.JFrame {
             }
         });
 
-        btListaFunc.setText("ListaFunc");
+        btListaFunc.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btListaFunc.setText("LISTA DE FUNCIONARIOS");
         btListaFunc.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btListaFuncActionPerformed(evt);
             }
         });
 
+
+        btAddRoupa.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btAddRoupa.setText("ADICIONAR ROUPAS");
         btAddRoupa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -196,6 +200,11 @@ public class Principal extends javax.swing.JFrame {
                                 .addGap(48, 48, 48)
                                 .addComponent(btListaFunc)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addGap(27, 27, 27)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(btListaFunc, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btAddRoupa, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
@@ -270,14 +279,14 @@ public class Principal extends javax.swing.JFrame {
             Login.getLoginUnic().setVisible(true);
         }
         else{
-            System.out.println("Já está logado");
+            JOptionPane.showMessageDialog(null, "Já está logado!!",
+                    "Login", 1);
         }
     }//GEN-LAST:event_mnitLoginActionPerformed
 
     private void mnitDeslogarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnitDeslogarActionPerformed
         Login.getLoginUnic().setLog(-1);
         setLog(-1);
-        System.out.println(log);
         botoesCertos(log);
     }//GEN-LAST:event_mnitDeslogarActionPerformed
 

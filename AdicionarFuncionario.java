@@ -4,6 +4,8 @@
  */
 package sapaiada;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author joaop
@@ -48,6 +50,8 @@ public class AdicionarFuncionario extends javax.swing.JFrame {
         cxIdLoja = new javax.swing.JTextField();
         cxSenha = new javax.swing.JPasswordField();
         btCadastrar = new javax.swing.JButton();
+        btVoltar = new javax.swing.JButton();
+        btLimpar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -83,15 +87,35 @@ public class AdicionarFuncionario extends javax.swing.JFrame {
             }
         });
 
+        btVoltar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btVoltar.setText("VOLTAR");
+        btVoltar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btVoltarActionPerformed(evt);
+            }
+        });
+
+        btLimpar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btLimpar.setText("LIMPAR");
+        btLimpar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btLimparActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(15, 15, 15)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(rotId)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(cxId))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(rotCargo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -100,24 +124,24 @@ public class AdicionarFuncionario extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(cxCargo)
-                                    .addComponent(cxIdLoja)
-                                    .addComponent(cxSenha)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(rotId)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(cxId, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(rotEmail)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(cxEmail))
+                                    .addComponent(cxSenha)
+                                    .addComponent(cxIdLoja)))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(rotNome)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(cxNome))))
+                                .addComponent(cxNome))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(rotEmail)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(cxEmail))))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(104, 104, 104)
+                        .addContainerGap()
+                        .addComponent(btVoltar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
+                        .addComponent(btLimpar)
+                        .addGap(18, 18, 18)
                         .addComponent(btCadastrar)))
-                .addContainerGap(35, Short.MAX_VALUE))
+                .addGap(27, 27, 27))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -147,7 +171,10 @@ public class AdicionarFuncionario extends javax.swing.JFrame {
                     .addComponent(rotIdLoja)
                     .addComponent(cxIdLoja, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(btCadastrar)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btCadastrar)
+                    .addComponent(btVoltar)
+                    .addComponent(btLimpar))
                 .addContainerGap(24, Short.MAX_VALUE))
         );
 
@@ -160,48 +187,37 @@ public class AdicionarFuncionario extends javax.swing.JFrame {
 
     private void btCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCadastrarActionPerformed
         addFunc();
+        limpar();
     }//GEN-LAST:event_btCadastrarActionPerformed
+
+    private void btLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btLimparActionPerformed
+        limpar();
+    }//GEN-LAST:event_btLimparActionPerformed
+
+    private void btVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btVoltarActionPerformed
+        limpar();
+        this.dispose();
+    }//GEN-LAST:event_btVoltarActionPerformed
     
     public void addFunc(){
         Conexao.getCon().adicionarFuncionario(Integer.parseInt(cxId.getText()), cxEmail.getText(), cxNome.getText(), cxCargo.getText(), cxSenha.getText(), Integer.parseInt(cxIdLoja.getText()));
+        JOptionPane.showMessageDialog(null, "Cadastrado com sucesso!",
+                "Cadastro", 1);
     }
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AdicionarFuncionario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AdicionarFuncionario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AdicionarFuncionario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AdicionarFuncionario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new AdicionarFuncionario().setVisible(true);
-            }
-        });
+    
+    public void limpar(){
+        cxId.setText("");
+        cxNome.setText("");
+        cxCargo.setText("");
+        cxEmail.setText("");
+        cxSenha.setText("");
+        cxIdLoja.setText("");
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btCadastrar;
+    private javax.swing.JButton btLimpar;
+    private javax.swing.JButton btVoltar;
     private javax.swing.JTextField cxCargo;
     private javax.swing.JTextField cxEmail;
     private javax.swing.JTextField cxId;

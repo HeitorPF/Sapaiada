@@ -41,6 +41,7 @@ public class Login extends javax.swing.JFrame {
         cxEmail = new javax.swing.JTextField();
         btLogin = new javax.swing.JButton();
         cxSenha = new javax.swing.JPasswordField();
+        btVoltar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("LOGIN");
@@ -64,6 +65,14 @@ public class Login extends javax.swing.JFrame {
             }
         });
 
+        btVoltar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btVoltar.setText("VOLTAR");
+        btVoltar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btVoltarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -71,7 +80,9 @@ public class Login extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(137, 137, 137)
+                        .addContainerGap()
+                        .addComponent(btVoltar)
+                        .addGap(56, 56, 56)
                         .addComponent(btLogin))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(26, 26, 26)
@@ -96,7 +107,9 @@ public class Login extends javax.swing.JFrame {
                     .addComponent(rotSenha)
                     .addComponent(cxSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btLogin)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btLogin)
+                    .addComponent(btVoltar))
                 .addContainerGap(17, Short.MAX_VALUE))
         );
 
@@ -106,7 +119,6 @@ public class Login extends javax.swing.JFrame {
     private void btLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btLoginActionPerformed
         Conexao.getCon().executaBuscaFunc(0, "");
         for(Funcionario f : Banco.getBancoRoupaUnic().getBdFuncionario()){
-            System.out.println(f.getEmail());
             if(cxEmail.getText().equals(f.getEmail())){
                 if(cxSenha.getText().equals(f.getSenha())){
                     if(f.getCargFunc().equals("Chefe")){
@@ -118,18 +130,19 @@ public class Login extends javax.swing.JFrame {
                     fun.setIdFunc(f.getIdFunc());
                     JOptionPane.showMessageDialog(null, "Logou com sucesso!",
                 "Sucesso", 1);
+                    limpar();
                     dispose();
                     break;
                 }
                 else{
                     JOptionPane.showMessageDialog(null, "Senha ou email incorreto",
                 "Erro", 1);
+                    limpar();
                 }
             }
         }
         Conexao.getCon().executaBuscaCliente();
         for(Cliente c : Banco.getBancoRoupaUnic().getBdCliente()){
-            System.out.println(c.getEmailCliente());
             if(cxEmail.getText().equals(c.getEmailCliente())){
                 if(cxSenha.getText().equals(c.getSenhaCliente())){
                     log = 0;
@@ -139,11 +152,13 @@ public class Login extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(null, "Logou com sucesso!",
                 "Sucesso", 1);
                     dispose();
+                    limpar();
                     break;
                 }
                 else{
                     JOptionPane.showMessageDialog(null, "Senha ou email incorreto",
                 "Erro", 1);
+                    limpar();
                 }
             }
         }
@@ -158,6 +173,11 @@ public class Login extends javax.swing.JFrame {
         return cli;
     }
     
+    private void btVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btVoltarActionPerformed
+        limpar();
+        this.dispose();
+    }//GEN-LAST:event_btVoltarActionPerformed
+
     public void botoesCertos(int login){
         ListaFuncionarios.getListFunc().getBtAdicionar().setVisible(false);
         Principal.getPrincipalUnic().getBtListaFunc().setVisible(false);
@@ -172,43 +192,14 @@ public class Login extends javax.swing.JFrame {
             ListaFuncionarios.getListFunc().getBtAdicionar().setVisible(true);
         }
     }
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Login().setVisible(true);
-            }
-        });
+    
+    public void limpar(){
+        cxEmail.setText("");
+        cxSenha.setText("");
     }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btLogin;
+    private javax.swing.JButton btVoltar;
     private javax.swing.JTextField cxEmail;
     private javax.swing.JPasswordField cxSenha;
     private javax.swing.JLabel rotEmail;
