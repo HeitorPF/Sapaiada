@@ -78,13 +78,22 @@ public class Conexao {
         }
     }
     
-    public int comprarRoupa(int idRoupa, int quantDisp, int quantComp) {
-        if(quantDisp >= quantComp){
+    public int comprarRoupa(int idCompra, Roupa r, int quantComp) {
+        int quant = 0;
+        if(r.getQuant() >= quantComp){
+            float total = 0;
+            while(quant <= quantComp){
+                total = total + r.getPreco();
+                quant ++;
+            }
             try{
-                String s = "INSERT INTO Item_Vendido values (id_Compra,id_Roupa,qtd_Compra,preco_Compra)";
-                String sql = "UPDATE roupa SET qtd_roupa = "+ (quantDisp-quantComp) +" WHERE id_roupa = " + idRoupa +";";
+                String insertCompra = "INSERT INTO compra values("+ idCompra +",current_date, " + total+","+ Login.getLoginUnic().getCliente().getIdCliente() +")";
+                String insertIV = "INSERT INTO Item_Vendido values ("+ idCompra +","+ r.getIdRoupa()+","+ quantComp+",total)";
+                String update = "UPDATE roupa SET qtd_roupa = "+ (r.getQuant()-quantComp) +" WHERE id_roupa = " + r.getIdRoupa() +";";
                 Statement stm = con.createStatement();
-                int res = stm.executeUpdate(sql);
+                stm.executeUpdate(update);
+                stm.executeUpdate(insertCompra);
+                int res = stm.executeUpdate(insertIV);
                 return res;
             }
             catch(Exception e){
