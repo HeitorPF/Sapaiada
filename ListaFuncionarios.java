@@ -77,6 +77,11 @@ public class ListaFuncionarios extends javax.swing.JFrame {
         });
 
         btAdicionar.setText("ADICIONAR");
+        btAdicionar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btAdicionarActionPerformed(evt);
+            }
+        });
 
         btBusca.setText("BUSCAR");
         btBusca.addActionListener(new java.awt.event.ActionListener() {
@@ -142,6 +147,10 @@ public class ListaFuncionarios extends javax.swing.JFrame {
         Conexao.getCon().executaBuscaFunc(pos, cxBuscar.getText());
         listarFunc(pos);
     }//GEN-LAST:event_btBuscaActionPerformed
+
+    private void btAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAdicionarActionPerformed
+        AdicionarFuncionario.getAddFuncUnic().setVisible(true);
+    }//GEN-LAST:event_btAdicionarActionPerformed
     
     public void listaFuncionario(int pos){
         DefaultTableModel tabModel = (DefaultTableModel) tabFuncionarios.getModel();
